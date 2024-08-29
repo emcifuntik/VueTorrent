@@ -1,6 +1,5 @@
 {
   "common": {
-    "active": "Aktív",
     "cancel": "Mégse",
     "close": "Bezár",
     "delete": "Törlés",
@@ -470,7 +469,11 @@
         "activeFilter": "{n} aktív szűrő",
         "category": "Kategória szűrő",
         "disabled": "(Letiltva)",
-        "state": "Torrent állapot szűrő",
+        "state": {
+          "active": "Aktív",
+          "error": "Hiba",
+          "title": "Torrent állapot szűrő"
+        },
         "tag": "Címke szűrő",
         "tracker": "Követő szűrő",
         "uncategorized": "(Kategorizálatlan)",
@@ -1132,7 +1135,11 @@
         "oldUrl": "Régi URL",
         "title": "Követő szerkesztése"
       },
-      "peersValue": "{peers} peerek ({seeds} S / {leeches} L)",
+      "fields": {
+        "num_downloaded": "Letöltve",
+        "num_peers": "Peerek",
+        "num_seeds": "Seedek"
+      },
       "reannounce": "Összes újrahirdetése",
       "tier": "Szint: {n}"
     }

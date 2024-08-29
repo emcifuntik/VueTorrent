@@ -1,21 +1,77 @@
 # Changelog
 
-## [2.11.1](https://github.com/VueTorrent/VueTorrent/compare/v2.11.0...v2.11.1) (2024-08-01)
+## [2.12.0](https://github.com/VueTorrent/VueTorrent/compare/v2.11.2...v2.12.0) (2024-08-18)
 
+### Features
+
+- Add global error handler ([#1834](https://github.com/VueTorrent/VueTorrent/issues/1834))
+  ([b241617](https://github.com/VueTorrent/VueTorrent/commit/b241617e6f62a1e5e76e5c3a2ea2ffbc60044332))
+- **filters:** Add conjunctive / disjunctive filter type ([#1855](https://github.com/VueTorrent/VueTorrent/issues/1855))
+  ([31378e0](https://github.com/VueTorrent/VueTorrent/commit/31378e07bf5ca8cb54c0c837d60305f0f3fc4d93))
 
 ### Bug Fixes
 
-* Sort values correctly ([#1811](https://github.com/VueTorrent/VueTorrent/issues/1811)) ([17700db](https://github.com/VueTorrent/VueTorrent/commit/17700db5985521787a139fb25db369b39708dac3))
-
+- Can't add torrents after [#1855](https://github.com/VueTorrent/VueTorrent/issues/1855) ([#1860](https://github.com/VueTorrent/VueTorrent/issues/1860))
+  ([8f89594](https://github.com/VueTorrent/VueTorrent/commit/8f895940cfa177d4d994794668c4d6a7dc74d3da))
+- **Dashboard:** Remove shadow of "Select All" row ([#1858](https://github.com/VueTorrent/VueTorrent/issues/1858))
+  ([fee292f](https://github.com/VueTorrent/VueTorrent/commit/fee292f007d3853d2b7ace923dbbc7044f8f1db4))
+- **ETA:** Update incorrect max value ([#1853](https://github.com/VueTorrent/VueTorrent/issues/1853))
+  ([2176bab](https://github.com/VueTorrent/VueTorrent/commit/2176babd5c17d3efa28702fb7a70a7448f596e1b))
+- Remove latest Set methods usage ([#1844](https://github.com/VueTorrent/VueTorrent/issues/1844))
+  ([483e8c4](https://github.com/VueTorrent/VueTorrent/commit/483e8c449f1596d0ae785f05749d0277c359e8fa))
+- **TableView:** Ripple effect on safari ([#1864](https://github.com/VueTorrent/VueTorrent/issues/1864))
+  ([5a25b7e](https://github.com/VueTorrent/VueTorrent/commit/5a25b7e4ae9582720c9e66ddb0eb1f4cb1e16753))
+- Tags not updating after [#1844](https://github.com/VueTorrent/VueTorrent/issues/1844) ([#1859](https://github.com/VueTorrent/VueTorrent/issues/1859))
+  ([0009e28](https://github.com/VueTorrent/VueTorrent/commit/0009e287601740ec478be7fb7686227fbe6d2619))
 
 ### Improvements
 
-* **Dashboard:** Merge pagination in toolbar on desktop ([#1808](https://github.com/VueTorrent/VueTorrent/issues/1808)) ([6f80c7d](https://github.com/VueTorrent/VueTorrent/commit/6f80c7d8c458eb67906cbc2a67c15ed916e34691))
-* Disable copy action if context not secure ([#1802](https://github.com/VueTorrent/VueTorrent/issues/1802)) ([c8faa6a](https://github.com/VueTorrent/VueTorrent/commit/c8faa6adb9f2fe2fcbd1c6bef6c68c293c5bcdc6))
-* Display speed limits in graph and navbar ([#1800](https://github.com/VueTorrent/VueTorrent/issues/1800)) ([381953a](https://github.com/VueTorrent/VueTorrent/commit/381953ad4ec72a47a423546bc5c164ec316a357c))
-* Increase mobile threshold for initial navbar open status ([#1807](https://github.com/VueTorrent/VueTorrent/issues/1807)) ([8a9673e](https://github.com/VueTorrent/VueTorrent/commit/8a9673eacc32fee5cb143cae9c6c3a36f0f79f54))
-* **navbar:** Persist opened state between sessions ([#1815](https://github.com/VueTorrent/VueTorrent/issues/1815)) ([17f9759](https://github.com/VueTorrent/VueTorrent/commit/17f9759bbf9d4fea6f9989f01cdbd45f533ca4b9))
-* **trackers:** Switch to table view ([#1813](https://github.com/VueTorrent/VueTorrent/issues/1813)) ([3fd85a1](https://github.com/VueTorrent/VueTorrent/commit/3fd85a1e567c6bdc34f36139486b9c6dfe86ebbd))
+- **Content/bulk select:** Improve UX ([#1845](https://github.com/VueTorrent/VueTorrent/issues/1845))
+  ([09f17b9](https://github.com/VueTorrent/VueTorrent/commit/09f17b97d6128cb2ed60ce5f265dcae5d2c70a9d))
+
+## [2.11.2](https://github.com/VueTorrent/VueTorrent/compare/v2.11.1...v2.11.2) (2024-08-11)
+
+### Bug Fixes
+
+- **TableView:** Hide table with no torrents ([#1837](https://github.com/VueTorrent/VueTorrent/issues/1837))
+  ([422cee2](https://github.com/VueTorrent/VueTorrent/commit/422cee264191e55eb98d84c0706ab84da6f6afde))
+
+### Improvements
+
+- Add configurable format for duration values ([#1826](https://github.com/VueTorrent/VueTorrent/issues/1826))
+  ([831ac9b](https://github.com/VueTorrent/VueTorrent/commit/831ac9b52560b4d50a391ef2694ca1c385b38e62))
+- **Dashboard:** Improve "sort by" keyboard interaction ([#1843](https://github.com/VueTorrent/VueTorrent/issues/1843))
+  ([9b521af](https://github.com/VueTorrent/VueTorrent/commit/9b521afea7bb94d4a2027c33ffb682b782b204fc))
+- **filters:** add additional presets to state filter ([#1836](https://github.com/VueTorrent/VueTorrent/issues/1836))
+  ([32b104f](https://github.com/VueTorrent/VueTorrent/commit/32b104fc968c7e5618a1b6398b09f2302ac3446a))
+- **SearchEngine:** Use last query as tab title ([#1822](https://github.com/VueTorrent/VueTorrent/issues/1822))
+  ([fdab225](https://github.com/VueTorrent/VueTorrent/commit/fdab2250891f76bc34bbb81bc3d3e7809e07cd12))
+- **TableView:** Allow click on headers for quick sort ([#1824](https://github.com/VueTorrent/VueTorrent/issues/1824))
+  ([ed1209a](https://github.com/VueTorrent/VueTorrent/commit/ed1209ad20a703cca243f3649bb570b8ee92dab2))
+- **trackers:** Use hostname instead of full URL ([#1833](https://github.com/VueTorrent/VueTorrent/issues/1833))
+  ([a33ca1f](https://github.com/VueTorrent/VueTorrent/commit/a33ca1ff3c735571daed63271a596fb99cb88b3b))
+
+## [2.11.1](https://github.com/VueTorrent/VueTorrent/compare/v2.11.0...v2.11.1) (2024-08-01)
+
+### Bug Fixes
+
+- Sort values correctly ([#1811](https://github.com/VueTorrent/VueTorrent/issues/1811))
+  ([17700db](https://github.com/VueTorrent/VueTorrent/commit/17700db5985521787a139fb25db369b39708dac3))
+
+### Improvements
+
+- **Dashboard:** Merge pagination in toolbar on desktop ([#1808](https://github.com/VueTorrent/VueTorrent/issues/1808))
+  ([6f80c7d](https://github.com/VueTorrent/VueTorrent/commit/6f80c7d8c458eb67906cbc2a67c15ed916e34691))
+- Disable copy action if context not secure ([#1802](https://github.com/VueTorrent/VueTorrent/issues/1802))
+  ([c8faa6a](https://github.com/VueTorrent/VueTorrent/commit/c8faa6adb9f2fe2fcbd1c6bef6c68c293c5bcdc6))
+- Display speed limits in graph and navbar ([#1800](https://github.com/VueTorrent/VueTorrent/issues/1800))
+  ([381953a](https://github.com/VueTorrent/VueTorrent/commit/381953ad4ec72a47a423546bc5c164ec316a357c))
+- Increase mobile threshold for initial navbar open status ([#1807](https://github.com/VueTorrent/VueTorrent/issues/1807))
+  ([8a9673e](https://github.com/VueTorrent/VueTorrent/commit/8a9673eacc32fee5cb143cae9c6c3a36f0f79f54))
+- **navbar:** Persist opened state between sessions ([#1815](https://github.com/VueTorrent/VueTorrent/issues/1815))
+  ([17f9759](https://github.com/VueTorrent/VueTorrent/commit/17f9759bbf9d4fea6f9989f01cdbd45f533ca4b9))
+- **trackers:** Switch to table view ([#1813](https://github.com/VueTorrent/VueTorrent/issues/1813))
+  ([3fd85a1](https://github.com/VueTorrent/VueTorrent/commit/3fd85a1e567c6bdc34f36139486b9c6dfe86ebbd))
 
 ## [2.11.0](https://github.com/VueTorrent/VueTorrent/compare/v2.10.2...v2.11.0) (2024-07-21)
 

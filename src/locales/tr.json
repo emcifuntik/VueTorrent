@@ -1,6 +1,5 @@
 {
   "common": {
-    "active": "Aktif",
     "cancel": "İptal",
     "close": "Kapat",
     "delete": "Sil",
@@ -505,7 +504,11 @@
         "activeFilter": "{n} filtre etkin",
         "category": "Kategori Filtresi",
         "disabled": "(Devre Dışı)",
-        "state": "Torrent Durum Filtresi",
+        "state": {
+          "active": "Aktif",
+          "error": "Hata",
+          "title": "Torrent Durum Filtresi"
+        },
         "tag": "Etiket Filtresi",
         "tracker": "İzleyici Filtresi",
         "uncategorized": "(Kategorize Edilmemiş)",
@@ -1203,7 +1206,11 @@
         "oldUrl": "Eski URL",
         "title": "İzleyiciyi Düzenle"
       },
-      "peersValue": "{peers} eş ({seeds} S / {leeches} L)",
+      "fields": {
+        "num_downloaded": "İndirilen",
+        "num_peers": "Eşler",
+        "num_seeds": "Seedler"
+      },
       "reannounce": "Tümünü yeniden duyur",
       "tier": "Seviye: {n} "
     }

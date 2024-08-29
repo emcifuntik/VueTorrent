@@ -40,9 +40,14 @@ jobs:
             artifact-name: vuetorrent-demo
             artifact-path: ./vuetorrent-demo
 
+    outputs:
+      nightly_version: ${{ steps.version.outputs.nightly_version }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -80,6 +85,41 @@ jobs:
           path: ${{ matrix.artifact-path }}
           retention-days: 1
 
+      - name: Generate nightly version
+        id: version
+        if: ${{ matrix.npm-step == 'build' }}
+        run: |
+          echo "nightly_version=$(git describe --tags --exclude latest_nightly)" >> $GITHUB_OUTPUT
+
+      - name: Update nightly tag
+        if: ${{ matrix.npm-step == 'build' }}
+        run: |
+          git tag -f latest_nightly
+          git push -f --tags
+
+  release-nightly:
+    name: Create nightly pre-release to GitHub
+    needs: build-release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: vuetorrent-build
+          path: ./vuetorrent
+
+      - name: Zip VueTorrent
+        run: zip -qq -r ./vuetorrent.zip ./vuetorrent
+
+      - name: Create nightly release
+        uses: marvinpinto/action-automatic-releases@v1.2.1
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          prerelease: true
+          automatic_release_tag: latest_nightly
+          title: "${{ needs.build-release.outputs.nightly_version }}: Latest nightly"
+          files: |
+            vuetorrent.zip
+
   push-nightly:
     name: Push to nightly branch
     runs-on: ubuntu-latest
@@ -101,6 +141,48 @@ jobs:
         with:
           branch: nightly-release
           folder: ./vuetorrent
+
+  push-mod-nightly:
+    name: Push docker mod to GHCR (nightly)
+    runs-on: ubuntu-latest
+    needs: build-release
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: vuetorrent-build
+          path: ./vuetorrent
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/VueTorrent/vuetorrent-lsio-mod
+          tags: |
+            type=raw,value=nightly
+            type=sha
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        env:
+          DOCKER_BUILD_SUMMARY: false
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
 
   push-demo:
     name: Push to demo repo
@@ -166,8 +248,8 @@ jobs:
           branch: latest-release
           folder: ./vuetorrent
 
-  push-mod:
-    name: Push docker mod to GHCR
+  push-mod-release:
+    name: Push docker mod to GHCR (release)
     runs-on: ubuntu-latest
     needs: [ setup-release, build-release ]
     if: needs.setup-release.outputs.release_created
@@ -195,12 +277,13 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/VueTorrent/vuetorrent-lsio-mod
-          tags: type=match,pattern=v(.*),group=1,value=${{ needs.setup-release.outputs.tag_name }}
+          tags: |
+            type=match,pattern=v(.*),group=1,value=${{ needs.setup-release.outputs.tag_name }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
         env:
-          DOCKER_BUILD_NO_SUMMARY: true
+          DOCKER_BUILD_SUMMARY: false
         with:
           context: .
           push: true

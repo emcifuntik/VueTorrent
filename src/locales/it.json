@@ -419,7 +419,9 @@
         "activeFilter": "{n} filtri attivi",
         "category": "Filtro Categoria",
         "disabled": "(Disabilitato)",
-        "state": "Filtro Stato Torrent",
+        "state": {
+          "title": "Filtro Stato Torrent"
+        },
         "tag": "Filtro Etichetta",
         "tracker": "Filtro Tracker",
         "uncategorized": "(Senza categoria)",
@@ -493,6 +495,11 @@
         "download": "Download",
         "progress": "Avanzamento",
         "upload": "Upload"
+      }
+    },
+    "trackers": {
+      "fields": {
+        "num_downloaded": "Scaricati"
       }
     }
   },
