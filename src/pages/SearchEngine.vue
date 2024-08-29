@@ -4,7 +4,7 @@ import PluginManagerDialog from '@/components/Dialogs/PluginManagerDialog.vue'
 import { useSearchQuery } from '@/composables'
 import { HistoryKey } from '@/constants/vuetorrent'
 import { formatData } from '@/helpers'
-import { useAddTorrentStore, useDialogStore, useSearchEngineStore, useVueTorrentStore } from '@/stores'
+import { useDialogStore, useSearchEngineStore, useVueTorrentStore } from '@/stores'
 import { SearchPlugin, SearchResult } from '@/types/qbit/models'
 import { SearchData } from '@/types/vuetorrent'
 import { storeToRefs } from 'pinia'
@@ -14,7 +14,6 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 const { t } = useI18n()
-const addTorrentStore = useAddTorrentStore()
 const dialogStore = useDialogStore()
 const searchEngineStore = useSearchEngineStore()
 const vuetorrentStore = useVueTorrentStore()
@@ -81,7 +80,7 @@ function deleteTab() {
 }
 
 function downloadTorrent(result: SearchResult) {
-  addTorrentStore.pushTorrentToQueue(result.fileUrl)
+  searchEngineStore.downloadTorrent(result.fileUrl, result.engineName);
 }
 
 function openLink(result: SearchResult) {

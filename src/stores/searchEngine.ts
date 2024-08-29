@@ -55,6 +55,10 @@ export const useSearchEngineStore = defineStore(
       searchPlugins.value = await qbit.getSearchPlugins()
     }
 
+    async function downloadTorrent(torrentUrl: string, pluginName: string) {
+      await qbit.downloadSearchResult(torrentUrl, pluginName)
+    }
+
     async function installSearchPlugin(url: string) {
       await qbit.installSearchPlugin([url])
     }
@@ -80,6 +84,7 @@ export const useSearchEngineStore = defineStore(
       refreshResults,
       stopSearch,
       fetchSearchPlugins,
+      downloadTorrent,
       installSearchPlugin,
       uninstallSearchPlugin,
       toggleSearchPlugin,

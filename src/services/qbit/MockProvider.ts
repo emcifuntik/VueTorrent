@@ -47,6 +47,10 @@ export default class MockProvider implements IProvider {
     .map((_, i) => (i + 1).toString(16).padStart(40, '0'))
 
   private constructor() {}
+  downloadSearchResult(torrentUrl: string, pluginName: string): Promise<void> {
+    console.log(torrentUrl, pluginName);
+    throw new Error('Method not implemented.')
+  }
 
   static getInstance(): MockProvider {
     if (!MockProvider.instance) {
@@ -976,6 +980,7 @@ export default class MockProvider implements IProvider {
             fileUrl: 'https://www.example.com/torrent/SDb4v2op8wm',
             nbLeechers: 0,
             nbSeeders: 0,
+            engineName: 'example',
             siteUrl: 'https://www.example.com'
           }
         ],

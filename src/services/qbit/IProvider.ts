@@ -184,6 +184,14 @@ export default interface IProvider {
   getSearchResults(id: number, offset?: number, limit?: number): Promise<SearchResultsResponse>
 
   /**
+   * Download a search result
+   * @param torrentUrl Torrent URL
+   * @param pluginName Plugin name
+   * @version 5.0.0+
+   */
+  downloadSearchResult(torrentUrl: string, pluginName: string): Promise<void>
+
+  /**
    * Delete a search engine
    * @param id Search job ID
    */

@@ -276,6 +276,10 @@ export default class QBitProvider implements IProvider {
     }).then(res => res.data)
   }
 
+  async downloadSearchResult(torrentUrl: string, pluginName: string): Promise<void> {
+    return this.post('/search/downloadTorrent', { torrentUrl, pluginName })
+  }
+
   async deleteSearchPlugin(id: number): Promise<boolean> {
     return this.post('/search/delete', { id }).then(
       () => true,
